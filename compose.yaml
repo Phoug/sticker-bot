@@ -1,0 +1,22 @@
+services:
+  api:
+    build: .
+    command:
+      - python3
+      - -m
+      - uvicorn
+      - main:app
+      - --host=0.0.0.0
+      - --port=8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  bot:
+    build: .
+    command:
+      - python3
+      - bot.py
+    env_file:
+      - .env
